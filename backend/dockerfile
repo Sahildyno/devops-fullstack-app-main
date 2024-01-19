@@ -3,15 +3,14 @@ FROM node:14
 
 
 # Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR  /root/master 
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY  devops-fullstack-app/backend/ /root/master
 
 # Install Node.js dependencies
 RUN npm install
 
-ADD git pull https://github.com/shubhamkalsait/devops-fullstack-app.git
 
 # Expose the port your app will run on
 EXPOSE 3000
