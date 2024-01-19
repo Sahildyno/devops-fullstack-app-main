@@ -1,16 +1,20 @@
-##Install nodejs for docker
-FROM centos:7
-ADD curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
-ADD curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-COPY .bashrc /root/.bashrc
-CMD ["bash", "root", "/root/.bashrc"]
-RUN nvm install v14.10.0
-RUN apt install git 
-RUN mkdir cdec-b19
-WORKDIR  cdec-b19/
-RUN git init
-ADD git pull https://github.com/shubhamkalsait/devops-fullstack-app.git
-WORKDIR /frontend
+# Use an official Node.js image as the base image
+FROM node:14
+
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install Node.js dependencies
 RUN npm install
+
+ADD git pull https://github.com/shubhamkalsait/devops-fullstack-app.git
+
+# Expose the port your app will run on
 EXPOSE 3000
-CMD nvm -DFOREGROUND
+
+# Command to run your application
+CMD ["npm", "start"]
