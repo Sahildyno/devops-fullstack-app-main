@@ -8,10 +8,10 @@ WORKDIR /root/backend
 RUN git clone https://github.com/shubhamkalsait/devops-fullstack-app.git .
 
 # Change to the frontend directory
-WORKDIR /main/frontend
+WORKDIR /devops-fullstack-app/frontend
 
 # Copy package.json and package-lock.json to the working directory
-COPY devops-fullstack-app/frontend/package.json /root/backend/
+COPY package*.json /root/backend/
 
 # Change back to the original working directory
 WORKDIR /root/backend/frontend
