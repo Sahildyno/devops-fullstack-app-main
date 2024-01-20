@@ -12,6 +12,7 @@ WORKDIR /main/frontend
 
 # Copy package.json and package-lock.json to the working directory
 COPY /main/frontend/package.json ./
+COPY /main/frontend/package-lock.json ./
 
 # Install Node.js dependencies
 RUN npm install
