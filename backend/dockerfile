@@ -1,19 +1,16 @@
 # Use an official Node.js image as the base image
 FROM node:14
 
+
 # Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR  https://github.com/shubhamkalsait/devops-fullstack-app.git
 
 # Copy package.json and package-lock.json to the working directory
-COPY devops-fullstack-app/frontend/package.json /root/backend/
-COPY devops-fullstack-app/frontend/package-lock.json /root/backend/
-
+ADD https://github.com/shubhamkalsait/devops-fullstack-app.git /root/backend
 
 # Install Node.js dependencies
 RUN npm install
 
-# Copy the rest of the application code to the working directory
-COPY devops-fullstack-app/frontend/ .
 
 # Expose the port your app will run on
 EXPOSE 3000
