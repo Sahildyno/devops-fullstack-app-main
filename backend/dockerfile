@@ -11,8 +11,10 @@ RUN git clone https://github.com/shubhamkalsait/devops-fullstack-app.git .
 WORKDIR /main/frontend
 
 # Copy package.json and package-lock.json to the working directory
-COPY /main/frontend/package.json ./root/backend
-COPY /main/frontend/package-lock.json ./root/backend
+COPY package*.json /root/backend/
+
+# Change back to the original working directory
+WORKDIR /root/backend/frontend
 
 # Install Node.js dependencies
 RUN npm install
